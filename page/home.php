@@ -1,0 +1,191 @@
+<?php
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog MS</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+
+</head>
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+            <div class="logo"><a href="#">Bl<span>og</span></a></div>
+            <ul class="menu">
+                <li><a href="../http/logout.php" class="menu-btn">Home</a></li>
+                <li><a href="#about" class="menu-btn">About</a></li>
+                <li><a href="#posts" class="menu-btn">Post</a></li>
+                <li><a href="#education" class="menu-btn">Education</a></li>
+                <li><a href="#services" class="menu-btn">Services</a></li>
+                <li><a href="#contact" class="menu-btn">Contact</a></li>
+                <li><a href="./page/login.php" class="menu-btn">Login</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- home section start -->
+    <section class="home" id="home">
+        <div class="max-width">
+            <div class="home-content">
+                <div class="text-1">Hello, my name is</div>
+                <div class="text-2">Musa Aldanazar</div>
+                <!-- <div class="text-3">And I'm a</div> -->
+                <a href="#about">Hire me</a>
+            </div>
+        </div>
+    </section>
+
+    <?php 
+	    include "../http/conn-db.php";
+	    $sql = "SELECT * FROM post";
+	    $result = mysqli_query($conn, $sql);
+	?>
+
+    <!-- login section start -->
+    <section class="contact" id="contact">
+        <div class="max-width">
+            <div class="contact-content">
+                <div class="column right">
+                    <div class="text">Login</div>
+                    <form action="../http/post-s.php" method="POST">
+                        <div class="fields">
+                            <div class="field name">
+                                <input type="text" placeholder="icon" required name="icon" autocomplete="off">
+                            </div>
+                            <div class="field text">
+                                <input type="text" placeholder="title" required name="title" autocomplete="off">
+                            </div>
+                            <div class="field email">
+                                <input type="text" placeholder="post" required name="post" autocomplete="off">
+                            </div>
+                        </div>
+                        <!-- <div class="field">
+                            <input type="text" placeholder="Subject" required>
+                        </div>
+                        <div class="field textarea">
+                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                        </div> -->
+                        <div class="button-area">
+                            <button type="submit" name="submit">Log in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- posts section start -->
+    <section class="posts" id="posts">
+        <div class="max-width">
+            <h2 class="title">My posts</h2>
+            
+            <div class="post-content">
+            	<?php     while ($row = mysqli_fetch_array($result)) : ?>
+                <div class="card">
+                    <div class="box">
+                        <img src="../images/<?php echo $row['icon'];?>"></img>
+                        <div class="text"><?php echo $row['title'];?></div>
+                        <p><?php echo $row['post']?></p>
+                        <a class="del-btn" href="../http/post-s.php?delete=<?php echo $row['id']; ?>">Delete</a>
+                    </div>
+                </div>
+                <?php endwhile; ?>
+            </div>
+        	
+        </div>
+    </section>
+
+    <!-- education section start -->
+    <section class="education" id="education">
+        <div class="max-width">
+            <h2 class="title">Education</h2>
+            <div class="edu-content">
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-paint-brush"></i>
+                        <div class="text">Web Design</div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="text"></div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-code"></i>
+                        <div class="text">Apps Design</div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- services section start -->
+    <section class="services" id="services">
+        <div class="max-width">
+            <h2 class="title">My services</h2>
+            <div class="serv-content">
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-paint-brush"></i>
+                        <div class="text">Web Design</div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="text">Advertising</div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-code"></i>
+                        <div class="text">Apps Design</div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- footer section start -->
+    <footer>
+        <span>Created By <a href="https://www.codingnepalweb.com">MS+</a> | <span class="far fa-copyright"></span> 2020 All rights reserved.</span>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
+
+
+<?php }else{
+	header("Location: ../page/login.php?error=text");
+	exit();
+}?>
