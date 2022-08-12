@@ -3,7 +3,6 @@
 session_start();
 
 $id = 0;
-$update = false;
 $title = "";
 $post = "";
 
@@ -45,5 +44,5 @@ if (isset($_POST['update'])){
 	$mysqli->query("UPDATE data SET headerr='$header', postt='$post' WHERE id='$id'") or die($mysqli->error());
 	header("Location: ../part/home.php");
 }
-
-?>*/
+*/
+?>

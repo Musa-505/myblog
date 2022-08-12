@@ -290,7 +290,7 @@ section .title::after{
     transform: scale(1.05);
 }
 .posts .post-content .card img{
-    width: 270px;
+    width: 225px;
     font-size: 50px;
     color: crimson;
     transition: color 0.3s ease;

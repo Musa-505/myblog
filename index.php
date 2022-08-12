@@ -204,23 +204,23 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message me</div>
-                    <form action="#">
+                    <form action="./http/contact-my.php" method="POST">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" placeholder="Name" name="oname" >
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" placeholder="Email" name="oemail" >
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" placeholder="Subject" name="osubject" >
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10" placeholder="Message.." name="omessage" ></textarea>
                         </div>
                         <div class="button-area">
-                            <button type="submit">Send message</button>
+                            <button type="submit" name="submit">Send message</button>
                         </div>
                     </form>
                 </div>
