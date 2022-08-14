@@ -94,7 +94,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
     <section class="posts" id="posts">
         <div class="max-width">
             <h2 class="title">My posts</h2>
-            
             <div class="post-content">
             	<?php     while ($row = mysqli_fetch_array($result)) : ?>
                 <div class="card">
@@ -103,6 +102,33 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
                         <div class="text"><?php echo $row['title'];?></div>
                         <p><?php echo $row['post']?></p>
                         <a class="del-btn" href="../http/post-s.php?delete=<?php echo $row['id']; ?>">Delete</a>
+                    </div>
+                </div>
+                <?php endwhile; ?>
+            </div>
+        	
+        </div>
+    </section>
+
+    <?php 
+	    include "../http/conn-db.php";
+	    $sql = "SELECT * FROM contact";
+	    $result = mysqli_query($conn, $sql);
+	?>
+
+    <!-- my contact massages section start -->
+    <section class="posts" id="posts">
+        <div class="max-width">
+            <h2 class="title">my contact massages</h2>
+            <div class="post-content">
+            	<?php     while ($row = mysqli_fetch_array($result)) : ?>
+                <div class="card">
+                    <div class="box">
+                        <p><?php echo $row['oname'];?></p>
+                        <div class="text"><?php echo $row['oemail'];?></div>
+                        <p><?php echo $row['osubject']?></p>
+                        <p><?php echo $row['omessage']?></p>
+                        <a class="del-btn" href="../http/contact-my.php?delete=<?php echo $row['id']; ?>">Delete</a>
                     </div>
                 </div>
                 <?php endwhile; ?>
@@ -173,13 +199,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
         </div>
     </section>
 
-    
-
     <!-- footer section start -->
     <footer>
-        <span>Created By <a href="https://www.codingnepalweb.com">MS+</a> | <span class="far fa-copyright"></span> 2020 All rights reserved.</span>
+        <span>Created By <a href="https://instagram.com/">MS+</a> | <span class="far fa-copyright"></span> 2022 All rights reserved.</span>
     </footer>
-
     <script src="../js/script.js"></script>
 </body>
 </html>

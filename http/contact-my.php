@@ -14,5 +14,10 @@ if (isset($_POST['submit'])){
 	header("Location: ../index.php#contact");
 	$mysqli->query("INSERT INTO contact (oname, oemail, osubject, omessage) VALUES('$oname', '$oemail', '$osubject', '$omessage')") or die($mysqli->error);
 }
+if (isset($_GET['delete'])){
+	$id = $_GET['delete'];
+	$mysqli->query("DELETE FROM contact WHERE id=$id") or die($mysqli->error());
+	header("Location: ../page/home.php");
+}
 
 ?>
