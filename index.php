@@ -24,7 +24,6 @@
                 <li><a href="#about" class="menu-btn">About</a></li>
                 <li><a href="#posts" class="menu-btn">Post</a></li>
                 <li><a href="#education" class="menu-btn">Education</a></li>
-                <li><a href="#services" class="menu-btn">Services</a></li>
                 <li><a href="#contact" class="menu-btn">Contact</a></li>
                 <li><a href="./page/login.php" class="menu-btn">Login</a></li>
             </ul>
@@ -87,53 +86,26 @@
         </div>
     </section>
 
+    <?php 
+	    include "./http/conn-db.php";
+	    $sql = "SELECT * FROM edu";
+	    $result = mysqli_query($conn, $sql);
+	?>
+
     <!-- education section start -->
     <section class="education" id="education">
         <div class="max-width">
             <h2 class="title">Education</h2>
-            <div class="edu-content hide-anch">
+            <div class="edu-content">
+            <?php     while ($row = mysqli_fetch_array($result)) : ?>
                 <div class="card">
                     <div class="box">
-                        <i class="fas fa-paint-brush"></i>
-                        <div class="text">Web Design</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
+                        <img src="../images/<?php echo $row['icon'];?>"></img>
+                        <div class="text"><?php echo $row['title'];?></div>
+                        <p><?php echo $row['post']?></p>
                     </div>
                 </div>
-                <div class="card hide">
-                    <div class="box">
-                        <i class="fas fa-chart-line"></i>
-                        <div class="text">Python</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card hide">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Java Script</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card hide">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Adobe Photoshop</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card hide">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Linux</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card hide">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Git Hub</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
+                <?php endwhile; ?>
                </div>
             </div>
         </div>

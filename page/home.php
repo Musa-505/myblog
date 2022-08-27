@@ -26,10 +26,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
             <div class="logo"><a href="#">Bl<span>og</span></a></div>
             <ul class="menu">
                 <li><a href="../http/logout.php" class="menu-btn">Home</a></li>
-                <li><a href="#about" class="menu-btn">About</a></li>
-                <li><a href="#posts" class="menu-btn">Post</a></li>
+                <li><a href="#posts" class="menu-btn">Posts</a></li>
                 <li><a href="#education" class="menu-btn">Education</a></li>
-                <li><a href="#services" class="menu-btn">Services</a></li>
                 <li><a href="#contact" class="menu-btn">Contact</a></li>
                 <li><a href="./page/login.php" class="menu-btn">Login</a></li>
             </ul>
@@ -51,18 +49,39 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
         </div>
     </section>
 
-    <?php 
-	    include "../http/conn-db.php";
-	    $sql = "SELECT * FROM post";
-	    $result = mysqli_query($conn, $sql);
-	?>
-
-    <!-- login section start -->
-    <section class="contact" id="contact">
+    <!-- add education section start -->
+    <section class="contact">
         <div class="max-width">
             <div class="contact-content">
                 <div class="column right">
-                    <div class="text">Login</div>
+                    <div class="text">Add Education</div>
+                    <form action="../http/edu-s.php" method="POST">
+                        <div class="fields">
+                            <div class="field name">
+                                <input type="text" placeholder="icon" required name="icon" autocomplete="off">
+                            </div>
+                            <div class="field text">
+                                <input type="text" placeholder="title" required name="title" autocomplete="off">
+                            </div>
+                            <div class="field email">
+                                <input type="text" placeholder="post" required name="post" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="button-area">
+                                <button type="submit" name="submit">Add Education</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- add post section start -->
+    <section class="contact">
+        <div class="max-width">
+            <div class="contact-content">
+                <div class="column right">
+                    <div class="text">Add post</div>
                     <form action="../http/post-s.php" method="POST">
                         <div class="fields">
                             <div class="field name">
@@ -75,14 +94,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
                                 <input type="text" placeholder="post" required name="post" autocomplete="off">
                             </div>
                         </div>
-                        <!-- <div class="field">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
-                        <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
-                        </div> -->
                         <div class="button-area">
-                            <button type="submit" name="submit">Log in</button>
+                            <button type="submit" name="submit">Add Post</button>
                         </div>
                     </form>
                 </div>
@@ -90,6 +103,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
         </div>
     </section>
 
+    <?php 
+	    include "../http/conn-db.php";
+	    $sql = "SELECT * FROM post";
+	    $result = mysqli_query($conn, $sql);
+	?>
     <!-- posts section start -->
     <section class="posts" id="posts">
         <div class="max-width">
@@ -101,12 +119,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
                         <img src="../images/<?php echo $row['icon'];?>"></img>
                         <div class="text"><?php echo $row['title'];?></div>
                         <p><?php echo $row['post']?></p>
-                        <a class="del-btn" href="../http/post-s.php?delete=<?php echo $row['id']; ?>">Delete</a>
+                        <a class="del-btn" href="../http/edu-s.php?delete=<?php echo $row['id']; ?>">Delete</a>
                     </div>
                 </div>
                 <?php endwhile; ?>
             </div>
-        	
+        </div>
+    </section>
+
+    <?php 
+	    include "../http/conn-db.php";
+	    $sql = "SELECT * FROM edu";
+	    $result = mysqli_query($conn, $sql);
+	?>
+
+    <!-- education section start -->
+    <section class="education" id="education">
+        <div class="max-width">
+            <h2 class="title">Education</h2>
+            <div class="edu-content">
+            <?php     while ($row = mysqli_fetch_array($result)) : ?>
+                <div class="card">
+                    <div class="box">
+                        <img src="../images/<?php echo $row['icon'];?>"></img>
+                        <div class="text"><?php echo $row['title'];?></div>
+                        <p><?php echo $row['post']?></p>
+                        <a class="del-btn" href="../http/post-s.php?delete=<?php echo $row['id']; ?>">Delete</a>
+                    </div>
+                </div>
+                <?php endwhile; ?>
+               </div>
+            </div>
         </div>
     </section>
 
@@ -117,7 +160,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
 	?>
 
     <!-- my contact massages section start -->
-    <section class="posts" id="posts">
+    <section class="posts" id="contact">
         <div class="max-width">
             <h2 class="title">my contact massages</h2>
             <div class="post-content">
@@ -132,69 +175,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
                     </div>
                 </div>
                 <?php endwhile; ?>
-            </div>
-        	
-        </div>
-    </section>
-
-    <!-- education section start -->
-    <section class="education" id="education">
-        <div class="max-width">
-            <h2 class="title">Education</h2>
-            <div class="edu-content">
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-paint-brush"></i>
-                        <div class="text">Web Design</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-chart-line"></i>
-                        <div class="text"></div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Apps Design</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-               </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- services section start -->
-    <section class="services" id="services">
-        <div class="max-width">
-            <h2 class="title">My services</h2>
-            <div class="serv-content">
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-paint-brush"></i>
-                        <div class="text">Web Design</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-chart-line"></i>
-                        <div class="text">Advertising</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <i class="fas fa-code"></i>
-                        <div class="text">Apps Design</div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.</p>
-                    </div>
-                </div>
-               </div>
             </div>
         </div>
     </section>
