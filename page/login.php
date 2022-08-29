@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
 </head>
 <body>
-    <div class="scroll-up-btn">
-        <i class="fas fa-angle-up"></i>
-    </div>
     <nav class="navbar">
         <div class="max-width">
             <div class="logo"><a href="#">Bl<span>og</span></a></div>
@@ -30,7 +27,7 @@
     </nav>
 
     <!-- login section start -->
-    <section class="login" id="login" style="background:#111111">
+    <section class="login" id="login">
         <div class="max-width">
             <div class="login-content">
                 <div class="text">Login</div>
@@ -53,7 +50,7 @@
     </section>
 
     <!-- footer section start -->
-    <footer style="padding: 110px 23px">
+    <footer>
         <span>Created By <a href="https://instagram.com/">MS+</a> | <span class="far fa-copyright"></span> 2022 All rights reserved.</span>
     </footer>
     <script src="../js/script.js"></script>

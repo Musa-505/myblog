@@ -1,11 +1,11 @@
-/*  import google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -decoration: none;
+    text-decoration: none;
+    background-color: #111111;
 }
 html{
     scroll-behavior: smooth;
@@ -29,16 +29,18 @@ section{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 section .title{
     position: relative;
-    -align: center;
+    text-align: center;
     font-size: 40px;
     font-weight: 500;
     margin-bottom: 60px;
     padding-bottom: 20px;
     font-family: 'Ubuntu', sans-serif;
 }
+
 section .title::before{
     content: "";
     position: absolute;
@@ -62,6 +64,7 @@ section .title::after{
 
 /* navbar styling */
 .navbar{
+    background-color: #111111;
     position: fixed;
     width: 100%;
     z-index: 999;
@@ -97,7 +100,7 @@ section .title::after{
 .navbar .menu li a{
     display: block;
     color: #fff;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 500;
     margin-left: 25px;
     transition: color 0.3s ease;
@@ -108,12 +111,41 @@ section .title::after{
 .navbar.sticky .menu li a:hover{
     color: #fff;
 }
-
-/* login section styling */
-.login{
-    background-color: #fff;
+.menu-btn{
+    display: none;
 }
-.login-s{
+/* login section styling */
+.login .title::after{
+    content: "get in touch";
+}
+.login .login-content .column{
+    width: calc(50% - 30px);
+}
+.login .login-content .text{
+    color: #f1f1f1;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+.login form .fields{
+    display: flex;
+}
+.login form .field,
+.login form .fields .field{
+    height: 45px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.login form .textarea{
+    height: 80px;
+    width: 100%;
+}
+.login form .name{
+    margin-right: 10px;
+}
+.login form .field input,
+.login form .textarea textarea{
     height: 100%;
     width: 100%;
     border: 1px solid lightgrey;
@@ -124,21 +156,53 @@ section .title::after{
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
 }
+.login form .field input:focus,
+.login form .textarea textarea:focus{
+    border-color: #b3b3b3;
+}
+.login form .textarea textarea{
+  padding-top: 10px;
+  resize: none;
+}
+.login form .button-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form .button-area button{
+  color: #fff;
+  display: block;
+  width: 160px!important;
+  height: 45px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-wrap: nowrap;
+  background: crimson;
+  border: 2px solid crimson;
+  transition: all 0.3s ease;
+}
+form .button-area button:hover{
+  color: crimson;
+  background: none;
+}
 /* footer section styling */
 footer{
     background: #111;
     padding: 15px 23px;
     color: #fff;
-    -align: center;
+    text-align: center;
+    font-size: 22px;
 }
 footer span a{
     color: crimson;
-    -decoration: none;
+    text-decoration: none;
 }
 footer span a:hover{
-    -decoration: underline;
+    text-decoration: underline;
 }
-
 
 /* responsive media query start */
 
@@ -149,8 +213,14 @@ footer span a:hover{
 }
 @media (max-width: 947px){
     .menu-btn{
+        font-size: 26px;
+        color: white;
+        cursor: pointer;
         display: block;
         z-index: 999;
+    }
+    .menu-btn i.active:before{
+        content: "\f00d";
     }
     .navbar .menu{
         position: fixed;
@@ -159,7 +229,7 @@ footer span a:hover{
         left: -100%;
         top: 0;
         background: #111;
-        -align: center;
+        text-align: center;
         padding-top: 80px;
         transition: all 0.3s ease;
     }
@@ -177,9 +247,14 @@ footer span a:hover{
     .max-width{
         max-width: 930px;
     }
+
     .login .login-content .column{
         width: 100%;
         margin-bottom: 35px;
+    }
+    .login form .fields {
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -190,14 +265,14 @@ footer span a:hover{
 }
 
 @media (max-width: 500px) {
-    .login .right form .fields{
+    .login form .fields{
         flex-direction: column;
     }
-    .login .right form .name,
-    .login .right form .email{
+    .login form .name,
+    .login form .email{
         margin: 0;
     }
-    .right form .error-box{
+    form .error-box{
        width: 150px;
     }
 }

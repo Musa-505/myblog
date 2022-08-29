@@ -6,53 +6,13 @@
     <title>Blog MS</title>
     <link rel="icon" href="./images/icon.jpg">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./dist/charts.min.css">
+    <link rel="stylesheet" href="./css/diagram.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
-    <link rel="stylesheet" href="./dist/charts.min.css">
-        <style>
-          .container {
-            max-width: 900px;
-            margin: 0 auto;
-          }
-          .examples {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 150px;
-          }
-          h1, h2, h3, h4, h5, h6 {
-            text-align: center;
-            text-decoration: underline;
-            margin: 1.5rem auto;
-          }
-          h1 {
-            font-size: 3rem;
-          }
-          h2 {
-            font-size: 2.5rem;
-            margin-top: 10rem;
-          }
-          h3 {
-            font-size: 2rem;
-          }
-          h4 {
-            font-size: 1.5rem;
-          }
-          p {
-            text-align: center;
-          }
-          code {
-            background-color: #ffecef;
-            padding: 5px;
-          }
-          .stacked td {
-            --color-1: rgba(21, 197, 109, 0.788);
-            --color-2: rgba(110, 67, 6, 0.767);
-            --color-3: rgba(255, 50, 50, 0.5);
-        }
-        </style>
 </head>
 <body>
     <div class="scroll-up-btn">
@@ -64,6 +24,7 @@
             <ul class="menu">
                 <li><a href="#home" class="menu-btn">Home</a></li>
                 <li><a href="#about" class="menu-btn">About</a></li>
+                <li><a href="#static" class="menu-btn">Static</a></li>
                 <li><a href="#posts" class="menu-btn">Post</a></li>
                 <li><a href="#education" class="menu-btn">Education</a></li>
                 <li><a href="#contact" class="menu-btn">Contact</a></li>
@@ -104,42 +65,30 @@
         </div>
     </section>
 
-    <!-- code -->
-    
-    <table class="charts-css line show-labels show-data-on-hover show-primary-axis show-data-axes multiple" style="height: 200px;">
-        <caption>Years Compared</caption>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Progress 1</th>
-            <th>Progress 2</th>
-            <th>Progress 3</th>
-            <th>Progress 4</th>
-            <th>Progress 5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">2000</th>
-            <td style="--start:0.0; --size: 0.1;"> <span class="data"> 1 </span> </td>
-            <td style="--start:0.0; --size: 0.1;"> <span class="data"> 1 </span> </td>
-            <td style="--start:0.0; --size: 0.1;"> <span class="data"> 1 </span> </td>
-          </tr>
-          <tr>
-            <th scope="row">2010</th>
-            <td style="--start:0.1; --size: 0.2;"> <span class="data"> 2 </span> </td>
-            <td style="--start:0.1; --size: 0.1;"> <span class="data"> 1 </span> </td>
-            <td style="--start:0.1; --size: 0.3;"> <span class="data"> 3 </span> </td>
-          </tr>
-          <tr>
-            <th scope="row">2020</th>
-            <td style="--start:0.2; --size: 0.5;"> <span class="data"> 5 </span> </td>
-            <td style="--start:0.1; --size: 0.2;"> <span class="data"> 2 </span> </td>
-            <td style="--start:0.3; --size: 0.4;"> <span class="data"> 4 </span> </td>
-          </tr>
-        </tbody>
-      </table>
-
+    <?php 
+        include "./http/conn-db.php";
+        $sql = "SELECT * FROM stati";
+        $result = mysqli_query($conn, $sql);
+    ?>
+    <!-- table with -->
+    <section class="about" id="ststic">
+        <div class="max-width">
+            <table class="charts-css line show-labels show-data-on-hover show-primary-axis show-data-axes multiple" style="height: 200px;">
+                <caption>Years Compared</caption>
+                <tbody>
+                <?php     while ($row = mysqli_fetch_array($result)) : ?>
+                <tr>
+                    <th scope="row"><?php echo $row['tname'];?></th>
+                    <td style="--start:<?php echo $row['codeone'];?>; --size: <?php echo $row['codeonez'];?>;"> <span class="data"> <?php echo $row['onename'];?> </span> </td>
+                    <td style="--start:<?php echo $row['codetwe'];?>; --size: <?php echo $row['codetwez'];?>;"> <span class="data"> <?php echo $row['twename'];?> </span> </td>
+                    <td style="--start:<?php echo $row['codethree'];?>; --size: <?php echo $row['codethreez'];?>;"> <span class="data"> <?php echo $row['threename'];?> </span> </td>
+                    <!-- <td style="--start:0.0; --size: 0.1;"> <span class="data"> 1 </span> </td> -->
+                </tr>
+                <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
     <?php 
         include "./http/conn-db.php";
         $sql = "SELECT * FROM post";

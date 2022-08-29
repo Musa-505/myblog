@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog MS</title>
     <link rel="icon" href="../images/icon.jpg">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
@@ -45,6 +45,54 @@ if (isset($_SESSION['id']) && isset($_SESSION['login'])) {?>
                 <div class="text-2">Musa Aldanazar</div>
                 <!-- <div class="text-3">And I'm a</div> -->
                 <a href="#about">Hire me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- static section start -->
+    <section class="contact">
+        <div class="max-width">
+            <div class="contact-content">
+                <div class="column right">
+                    <div class="text">Add Static</div>
+                    <form action="../http/static-s.php" method="POST">
+                        <div class="fields">
+                            <div class="field name">
+                                <input type="text" placeholder="Table name" required name="tname" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="first inc" required name="codeone" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="first inc new" required name="codeonez" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="second inc" required name="codetwe" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="second inc new" required name="codetwez" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="thred inc" required name="codethree" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="thred inc new" required name="codethreez" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="one name" required name="onename" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="two name" required name="twename" autocomplete="off">
+                            </div>
+                            <div class="field name">
+                                <input type="text" placeholder="three name" required name="threename" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="button-area">
+                                <button type="submit" name="submit">Add Static</button>
+                            </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

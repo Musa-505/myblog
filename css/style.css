@@ -11,21 +11,6 @@ html{
     scroll-behavior: smooth;
 }
 
-/* custom scroll bar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
 /* all similar content styling codes */
 section{
     padding: 100px 0;
@@ -48,6 +33,7 @@ section{
     justify-content: space-between;
 }
 section .title{
+    text-decoration: none;
     position: relative;
     text-align: center;
     font-size: 40px;
