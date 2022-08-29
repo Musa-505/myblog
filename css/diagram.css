@@ -1,0 +1,39 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 150px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    text-decoration: underline;
+    margin: 1.5rem auto;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+    margin-top: 10rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  p {
+    text-align: center;
+  }
+  code {
+    background-color: #ffecef;
+    padding: 5px;
+  }
+  .stacked td {
+    --color-1: rgba(21, 197, 109, 0.788);
+    --color-2: rgba(110, 67, 6, 0.767);
+    --color-3: rgba(255, 50, 50, 0.5);
+  }

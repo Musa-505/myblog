@@ -21,7 +21,10 @@
             <div class="logo"><a href="#">Bl<span>og</span></a></div>
             <ul class="menu">
                 <li><a href="../index.php#home" class="menu-btn">Home</a></li>
-                <li><a href="./login.php#login" class="menu-btn">Login</a></li>
+                <li><a href="../index.php#posts" class="menu-btn">Post</a></li>
+                <li><a href="../index.php#education" class="menu-btn">Education</a></li>
+                <li><a href="../index.php#contact" class="menu-btn">Contact</a></li>
+                <li><a href="#contact" class="menu-btn">Login</a></li>
             </ul>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
@@ -29,31 +32,20 @@
         </div>
     </nav>
 
-    <!-- login section start -->
-    <section class="login" id="login" style="background:#111111">
+    <!-- home section start -->
+    <section class="home" id="home">
         <div class="max-width">
-            <div class="login-content">
-                <div class="text">Login</div>
-                    <form action="../http/login-s.php" method="POST">
-                        <div class="fields">
-                            <div class="field name">
-                                <input type="text" placeholder="Name" required name="login" class="login-s">
-                            </div>
-                            <div class="field email">
-                                <input type="password" placeholder="Email" required name="password" class="password">
-                            </div>
-                        </div>
-                        <div class="button-area">
-                            <button type="submit" name="submit">Log in</button>
-                        </div>
-                    </form>
-                </div>
+            <div class="home-content">
+                <div class="text-1">Hello, my name is</div>
+                <div class="text-2">Musa Aldanazar</div>
+                <!-- <div class="text-3">And I'm a</div> -->
+                <a href="#">Hire me</a>
             </div>
         </div>
     </section>
 
     <!-- footer section start -->
-    <footer style="padding: 110px 23px">
+    <footer>
         <span>Created By <a href="https://instagram.com/">MS+</a> | <span class="far fa-copyright"></span> 2022 All rights reserved.</span>
     </footer>
     <script src="../js/script.js"></script>
